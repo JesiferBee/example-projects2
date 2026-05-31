@@ -209,6 +209,23 @@
             font-size: 14px;
         }
 
+        .form-meta{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .pill{
+            font-size: 12.5px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(17,17,17,.10);
+            background: rgba(255,255,255,.7);
+            color: rgba(17,17,17,.72);
+        }
+
         @media (max-width: 900px){
             .contact-grid{ grid-template-columns: 1fr; }
             .form-wrap{ padding-top: 40px; }
@@ -265,3 +282,34 @@
                             <div>
                                 <label for="name">Full name</label>
                                 <input id="name" name="name" type="text" value="{{ old('name') }}" placeholder="Your name" required>
+                                @error('name')
+                                    <p class="error-message">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="email">Email address</label>
+                                <input id="email" name="email" type="email" value="{{ old('email') }}" placeholder="you@example.com" required>
+                                @error('email')
+                                    <p class="error-message">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn-primary" type="submit">Create account</button>
+                            </div>
+                        </form>
+
+                        <p class="note" style="margin-top: 16px;">
+                            ✓ Your information is secure and private
+                        </p>
+                    </div>
+                </div>
+
+                <div class="note" style="margin-top: 14px; text-align:center;">
+                    © {{ date('Y') }} Example Project. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
